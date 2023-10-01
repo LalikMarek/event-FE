@@ -1,8 +1,4 @@
-import { Component } from '@angular/core';
-
-export enum Menu {
-  EVENTS = 'EVENTS',
-}
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +6,5 @@ export enum Menu {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  menu = Menu;
-  actualMenu = Menu.EVENTS;
 
-  changeMenu(menuItem: Menu): void {
-    this.actualMenu = menuItem;
-  }
 }

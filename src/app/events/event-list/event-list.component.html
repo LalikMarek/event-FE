@@ -1,0 +1,23 @@
+<!--<form [formGroup]="filterForm" (submit)="filter()">-->
+<!--    <input formControlName="name"/>-->
+
+<!--    <button type="submit">Filter</button>-->
+<!--</form>-->
+
+<table *ngIf="events?.content?.length">
+    <tr>
+        <th>Name</th>
+        <th style="width: 20px"></th>
+    </tr>
+    <tr *ngFor="let event of events?.content">
+        <td>{{ event.name }}</td>
+        <td>
+            <button (click)="updateEvent(event.id)">
+                Update
+            </button>
+            <button (click)="deleteEvent(event.id)">
+                Delete
+            </button>
+        </td>
+    </tr>
+</table>

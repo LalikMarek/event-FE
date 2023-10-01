@@ -8,12 +8,11 @@
     <td>{{ person.firstName }}</td>
     <td>{{ person.lastName }}</td>
     <td>
-      <button (click)="updatePerson(person.id)">
-        Upraviť
-      </button>
-      <button (click)="deletePerson(person.id)">
-        Zmazať
-      </button>
+      <div class="button-group">
+        <button class="button-update" (click)="updatePerson(person.id)">Upraviť</button>
+        <button class="button-delete" (click)="deletePerson(person.id)">Zmazať</button>
+      </div>
     </td>
   </tr>
+
 </table>

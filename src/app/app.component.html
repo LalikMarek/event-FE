@@ -1,9 +1,6 @@
-<lib-toastify-toast-container></lib-toastify-toast-container>
-
-<div class="menu">
-    <button routerLink="events">
-        Events
-    </button>
+<div>
+    <button routerLink="/events">Events</button>
 </div>
-
-<router-outlet></router-outlet>
+<ng-container *ngIf="actualMenu === menu.EVENTS">
+    <router-outlet></router-outlet>
+</ng-container>

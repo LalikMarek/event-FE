@@ -1,0 +1,28 @@
+<h3>Events</h3>
+<form [formGroup]="form">
+    <label>Title:
+        <input type="text" formControlName="title"/>
+    </label>
+    <p class="invalid-text" *ngIf="form.controls.title.invalid">Insert name</p>
+    <p *ngIf="form.controls.title.errors?.['minlength']" class="invalid-text">
+        Minimum length is 3 characters.
+    </p>
+    <p *ngIf="form.controls.title.errors?.['required']" class="invalid-text">
+        Insert name.
+    </p>
+
+    <button type="button" [disabled]="form.invalid" (click)="saveEvent()">Save</button>
+</form>
+
+<table *ngIf="events.length">
+    <tr>
+        <th>Title</th>
+    </tr>
+    <tr *ngFor="let event of events; let i = index">
+        <td>{{ event.title }}</td>
+        <td>
+            <button (click)="editEvent(i)">Update</button>
+            <button (click)="deleteEvent(i)">Delete</button>
+        </td>
+    </tr>
+</table>

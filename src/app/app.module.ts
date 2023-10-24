@@ -8,8 +8,12 @@ import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { BookPageComponent } from './book/book-page/book-page.component';
 import { BorrowingPageComponent } from './borrowing/borrowing-page/borrowing-page.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {UserService} from './common/service/user.service';
+import {LoginPageComponent} from "./authentication/login-page/login-page.component";
+import {RouterOutlet} from "@angular/router";
+import {AuthGuard} from "./authentication/guard/auth.guard";
+import {AuthHeaderInterceptor} from "./authentication/interceptor/auth-header/auth-header.interceptor";
 
 @NgModule({
   declarations: [
@@ -18,17 +22,25 @@ import {UserService} from './common/service/user.service';
     UserFormComponent,
     UserListComponent,
     BookPageComponent,
-    BorrowingPageComponent
+    BorrowingPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterOutlet
   ],
   providers: [
-    UserService
+    UserService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHeaderInterceptor,
+      multi: true,
+    }
   ],
   bootstrap: [AppComponent]
 })
